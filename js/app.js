@@ -9,7 +9,7 @@
 // ── Configuration ──────────────────────────────────────────
 const CONFIG = {
   // Replace this URL with your exported Teachable Machine model URL
-  MODEL_URL: null, // e.g. "https://teachablemachine.withgoogle.com/models/XXXXX/"
+  MODEL_URL: "https://teachablemachine.withgoogle.com/models/LFkqiUZjV/", // e.g. "https://teachablemachine.withgoogle.com/models/XXXXX/"
   INFERENCE_FPS: 5,
   CONFIDENCE_THRESHOLD: 0.75, // 75 %
   STABLE_DETECTION_MS: 1000, // 1 second before showing info
