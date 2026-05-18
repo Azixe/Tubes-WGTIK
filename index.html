@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Smart Ingredient Scanner — Deteksi bahan masakan secara real-time menggunakan Computer Vision dan Teachable Machine."
+    />
+    <title>Smart Ingredient Scanner</title>
+
+    <!-- Google Fonts — Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- TensorFlow.js + Teachable Machine Image (load model later) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <h1>Smart Ingredient Scanner</h1>
+      <p>Deteksi Bahan Masakan via Webcam</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Left: Camera Panel -->
+      <section class="camera-panel">
+        <div class="camera-wrapper">
+          <video id="cameraFeed" autoplay playsinline muted></video>
+
+          <!-- Overlay shown when ingredient detected -->
+          <div id="detectionOverlay" class="detection-overlay" style="display: none">
+            <div id="detectedLabel" class="detected-label">—</div>
+            <div id="detectedConfidence" class="detected-confidence">Confidence: —</div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="camera-controls">
+          <button id="btnStart" class="btn btn-primary">Mulai Deteksi</button>
+          <button id="btnStop" class="btn btn-secondary" disabled>Stop</button>
+        </div>
+
+        <p id="statusText" class="status-text"></p>
+      </section>
+
+      <!-- Right: Info Panel -->
+      <aside class="info-panel">
+        <!-- Ingredient Info -->
+        <div id="ingredientCard" class="ingredient-card">
+          <h2>Bahan Terdeteksi</h2>
+          <p id="placeholderText" class="placeholder-text">
+            Belum ada bahan terdeteksi. Aktifkan kamera dan arahkan bahan masakan.
+          </p>
+          <p id="ingredientName" class="ingredient-name" style="display: none"></p>
+          <p id="ingredientDesc" class="ingredient-desc" style="display: none"></p>
+
+          <div id="recipeList" class="recipe-list" style="display: none">
+            <h3>Contoh Resep</h3>
+            <ul></ul>
+          </div>
+        </div>
+
+        <!-- Confidence Bars -->
+        <div class="confidence-card">
+          <h2>Confidence per Kelas</h2>
+          <div id="confidenceBars" class="confidence-bars">
+            <!-- Filled dynamically by app.js -->
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Scripts: ingredients data first, then app logic -->
+    <script src="js/ingredients.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
